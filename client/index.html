@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap">
+    <link rel="stylesheet" href="./styles/app.css"/>
+</head>
+<body>
+<main id="app">
+    <!-- Left sidebar (current data) -->
+    <section id="current">
+        <time></time>
+        <div class="data">
+            <div class="temp"></div>
+            <div class="city"></div>
+            <div class="desc"></div>
+        </div>
+    </section>
+    <!-- Right sidebar (history data) -->
+    <aside id="forecast">
+        <div id="loader"></div>
+        <h3>History</h3>
+        <div class="table-container">
+            <table>
+                <tbody></tbody>
+            </table>
+        </div>
+    </aside>
+</main>
+<!-- I have to mention module type because I used ES imports in my files -->
+<script type="module" src="./scripts/app.js"></script>
+</body>
+</html>

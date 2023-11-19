@@ -1,0 +1,197 @@
+/*
+    Reset CSS
+    http://meyerweb.com/eric/tools/css/reset/
+    v5.0.1 | 20191019
+    License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, menu, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+main, menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+article, aside, details, figcaption, figure,
+footer, header, hgroup, main, menu, nav, section {
+    display: block;
+}
+/* HTML5 hidden-attribute fix for newer browsers */
+*[hidden] {
+    display: none;
+}
+body {
+    line-height: 1;
+}
+menu, ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+* {
+    box-sizing: border-box;
+}
+
+/* variables */
+:root {
+    --body-background: #ececec;
+    --text-color: #909090;
+    --font-family: 'Open Sans', Helvetica, Arial, Sans;
+    --font-size: 1rem;
+    --primary-color: #f34c91;
+    --accent-color: #f78167;
+    --default-shadow: rgba(0, 0, 0, 0.2) 0px 4px 4px 0px;
+}
+
+/* global styles */
+body {
+    background-color: var(--body-background);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    display: flex; width: 100vw; height: 100vh; overflow: hidden;
+    align-items: center; justify-content: center;
+}
+
+/* main app */
+#app {
+    box-shadow: var(--default-shadow);
+    background-color: #fff;
+    border-radius: var(--font-size);
+    width: 75vw; max-width: 1024px; overflow: hidden;
+    display: flex; flex-direction: row; align-items: stretch; justify-content: stretch;
+}
+
+/* left side */
+#current {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: #fff;
+    padding: 3rem;
+    display: flex; flex-direction: column; justify-content: space-between; align-items: stretch;
+    min-height: 50vh;
+    max-height: 600px;
+    width: 33.333%
+}
+time {
+    opacity: .6; font-size: 18px;
+}
+#current .temp {
+    font-size: 96px;
+}
+#current .city {
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+#current .desc {
+    opacity: .8;
+}
+
+/* right side */
+#forecast {
+    padding: 3rem; flex: 0 1 100%; max-width: 66.666%; max-height: 600px;
+    display: flex; flex-direction: column;
+}
+#forecast h3 {
+    font-size: 1.5rem;
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 1rem; margin-bottom: 1rem;
+}
+.table-container {
+    flex: 0 1 100%;
+    /*margin-bottom: 3rem;*/
+    overflow: hidden; overflow-y: scroll;
+}
+
+/* scrollbar */
+.table-container::-webkit-scrollbar {
+    width: 10px;
+    opacity: .2;
+    transition: .3s all;
+}
+.table-container:hover::-webkit-scrollbar {
+    opacity: 1;
+}
+.table-container::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: #efefef;
+    border: 1px solid #dedede;
+}
+.table-container::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-color: var(--accent-color);
+}
+@-moz-document url-prefix() {
+    :root {
+        scrollbar-color: #f78167 #efefef !important;
+        scrollbar-width: thin !important;
+    }
+}
+
+
+/* table-specific styles */
+table {
+    width: 100%; font-size: 1.25rem;
+}
+table thead { border-bottom: 1px solid #ddd; }
+table th { text-align: start; padding-bottom: 1rem; }
+table td:nth-child(n+2) { text-align: end; }
+
+table td:first-child { padding-left: 0; }
+table td { padding: 1rem; }
+table td.table-temp { color: var(--primary-color); }
+
+
+/* HTML: <div id="loader"></div> */
+#loader {
+    width: 100px;
+    aspect-ratio: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    display: grid;
+    background: #fff;
+    filter: blur(5px) contrast(10);
+    mix-blend-mode: darken;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+}
+#loader:before,
+#loader:after {
+    content: "";
+    grid-area: 1/1;
+    background: linear-gradient(var(--primary-color) 0 0) left, linear-gradient(var(--primary-color) 0 0) right;
+    background-size: 20px 40px;
+    background-origin: content-box;
+    background-repeat: no-repeat;
+}
+#loader:after {
+    height: 20px;
+    width: 20px;
+    margin: auto 0;
+    border-radius: 50%;
+    background: var(--primary-color);
+    animation: l10 1s infinite;
+}
+@keyframes l10 {
+    90%, 100% {transform: translate(300%)}
+}
